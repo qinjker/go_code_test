@@ -7,6 +7,11 @@ import (
 	"math/rand"
 )
 
+type Vertex struct {
+	x1 int
+	y1 int
+}
+
 var quit chan int = make(chan int)
 
 func loop() {
@@ -17,6 +22,19 @@ func loop() {
 }
 
 func main() {
+	v1 := Vertex{2, 3}
+	p1 := &v1
+	p1.x1 = 1e9
+	fmt.Println(v1)
+	i, j := 42, 1000
+	p := &i
+	fmt.Println(*p)
+	*p = 21
+	fmt.Println(i)
+	p = &j
+	*p = *p / 20
+	fmt.Println(j)
+
 	// 开两个goroutine跑函数loop, loop函数负责打印10个数
 	go loop()
 	go loop()
